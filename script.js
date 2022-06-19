@@ -10,6 +10,7 @@ const currentRoundElement = document.querySelector('.round h1');
 const playerPick = document.querySelector('.player-pick p');
 const PCPick = document.querySelector('.computer-pick p');
 const confirmButton = document.querySelector('.player-pick button');
+const logTable = document.querySelector('table');
 
 let computerScore = 0;
 let playerScore = 0;
@@ -18,6 +19,7 @@ let rounds;
 let currentRound = 1;
 let playerSelection;
 let winner;
+let roundsRemaining;
 
 function startRound(e) {
 
@@ -29,6 +31,17 @@ function startRound(e) {
 
 function playRound() {
 
+    function computerPlay() {
+        let randomNumber = Math.floor(
+            Math.random() * 3
+            );
+        let wordsArray = ['rock','paper','scissors'];
+        return wordsArray[randomNumber];
+
+        }
+
+    let computerPick = computerPlay()
+    
     if (currentRound === rounds) {
         if (computerScore > playerScore) {
             winner = 'Computer';
@@ -42,22 +55,21 @@ function playRound() {
             winner = 'Draw! No one';
         }
 
+        let row = logTable.insertRow();
+        let cell1 = row.insertCell(0);
+        let cell2 = row.insertCell(1);
+        let cell3 = row.insertCell(2);
+    
+        cell1.innerHTML = currentRound - 1;
+        cell2.innerHTML = playerPick.textContent;
+        cell3.innerHTML = computerPick;
+
         currentRoundElement.textContent = `${winner} wins!`
         confirmButton.style.opacity = '0';
         confirmButton.removeEventListener('click',playRound);
-        weapons.forEach(weapon => weapon.removeEventListener('click',playRound));
+        weapons.forEach(weapon => weapon.removeEventListener('click',startRound));
     }
 
-    function computerPlay() {
-        let randomNumber = Math.floor(
-            Math.random() * 3
-            );
-        let wordsArray = ['rock','paper','scissors'];
-        return wordsArray[randomNumber];
-
-        }
-
-    let computerPick = computerPlay()
 
     if (playerSelection === computerPick) {
         confirmButton.style.opacity = '0';
@@ -73,8 +85,7 @@ function playRound() {
         if (currentRound === rounds) return;
 
         currentRound++;
-        currentRoundElement.textContent = `Round ${currentRound}`;
-        
+        currentRoundElement.textContent = `Round ${currentRound}`;        
     }
 
     else if (
@@ -107,12 +118,22 @@ function playRound() {
         PCPick.textContent = computerPick;
     }
 
+    let row = logTable.insertRow();
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    let cell3 = row.insertCell(2);
+
+    cell1.innerHTML = currentRound - 1;
+    cell2.innerHTML = playerPick.textContent;
+    cell3.innerHTML = computerPick;
+
+    logTable.style.opacity = '100';
 }
 
 function showWeapons() {
     rounds = parseInt(numberOfRounds.value);
 
-    if (rounds === 0 || rounds === '') {
+    if (rounds === 0 || rounds === '' || isNaN(rounds)) {
         console.log('Choose number of rounds');
         return
     }
@@ -123,7 +144,7 @@ function showWeapons() {
     weapons.forEach(weapon => weapon.addEventListener('click',startRound));   
 }
 
-function endGame() {
+function reset() {
     computerScore = 0;
     playerScore = 0;
     currentRound = 1;
@@ -143,4 +164,4 @@ function endGame() {
 }
 
 submitRounds.addEventListener('click',showWeapons);
-forfeit.addEventListener('click',endGame);
+forfeit.addEventListener('click',reset);
