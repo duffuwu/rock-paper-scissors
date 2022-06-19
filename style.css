@@ -1,0 +1,90 @@
+.main {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 0px;
+    width: 700px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    display: flex;
+    font-size: 10px;
+    margin: 0px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: space-between;
+    /* border: 2px solid black; */
+}
+
+.console {
+    display: flex;
+    justify-content: space-between;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.options button {
+    font-size: 22px;
+    width: 100px;
+}
+
+.rounds-input {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 22px;
+}
+
+.rounds-input [name="rounds"] {
+    width: 50px;
+    font-size: 22px;
+}
+
+.rounds-input [name="submit"] {
+    font-size: 22px;
+    flex: auto;
+}
+
+.scores {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+    padding-top: 30px;
+
+}
+
+h2[name="player-score"] {
+    width: 200px;
+    text-align: right;
+}
+
+h2[name="computer-score"] {
+    width: 200px;
+    text-align: left;
+}
+
+.round {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.picks {
+    display: flex;
+    justify-content: center;
+    gap: 300px;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+
+}
