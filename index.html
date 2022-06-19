@@ -7,8 +7,16 @@
     <link rel="stylesheet" href="./style.css">
     <title>Rock-Paper-Scissors</title>
 </head>
-<body>  
+<body> 
     <div class="main">
+        <div class="number-of-rounds">
+            <h1>Number of rounds</h1>
+            <div class="rounds-input">
+                <input type="text" name="rounds" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />
+                <input type="submit" name="submit" value="Go!">
+                <input type="submit" name="end-game" value="Forfeit">
+            </div>
+        </div> 
         <div class="header">
             <div class="weapons">
                 <h1>Pick your weapon</h1>
@@ -18,44 +26,38 @@
                     <button type="button" name="scissors">Scissors</button>
                 </div> 
             </div>
+        </div>
+        <div class="information">
+            <div class="scores">
+                <h2 name="player-score">Player</h2>
+                <h2 name="player-score-number">0</h2>
+                <h2>X</h2>
+                <h2 name="computer-score-number">0</h2>
+                <h2 name="computer-score">Computer</h2>
+            </div>
 
-            <div class="number-of-rounds">
-                <h1>Number of rounds</h1>
-                <div class="rounds-input">
-                    <input type="text" name="rounds">
-                    <input type="submit" name="submit" value="Go!">
+            <div class="round">
+                <h1>Round 0</h1>
+            </div>
+
+            <div class="picks">
+                <div class="player-pick">
+                    <h3>Player pick</h3>
+                    <p></p>
+                    <button>Play</button>
+                </div>
+                <div class="computer-pick">
+                    <h3>Computer pick</h3>
+                    <p></p>
                 </div>
             </div>
         </div>
-
-        <div class="scores">
-            <h2 name="player-score">Player</h2>
-            <h2 name="player-score-number">0</h2>
-            <h2>X</h2>
-            <h2 name="computer-score-number">0</h2>
-            <h2 name="computer-score">Computer</h2>
-        </div>
-
-        <div class="round">
-            <h1>Round</h1>
-            <h1>0</h1>
-        </div>
-
-        <div class="picks">
-            <div class="player-pick">
-                <h3>Player pick</h3>
-
-            </div>
-            <div class="computer-pick">
-                <h3>Computer pick</h3>
-            </div>
-        </div>
-        
         <div class="result">
             <h1>Winner</h1>
         </div>
     </div>
 
     <script src="./script.js"></script>
+
 </body>
 </html>
